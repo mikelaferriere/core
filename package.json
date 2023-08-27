@@ -1,12 +1,14 @@
 {
   "name": "@mikelaferriere/core",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Shared module containing logging, metrics and other modules",
   "main": "build/index.js",
   "repository": "https://github.com/mikelaferriere/core",
   "types": "./build/models",
   "scripts": {
     "build": "tsc",
+    "deploy": "tsc",
+    "postdeploy": "rm -rf node_modules",
     "lint": "eslint .",
     "format": "prettier --write .",
     "pre-commit": "npm run format && npm run lint && npm run build",
