@@ -1,8 +1,9 @@
 {
-  "name": "core",
+  "name": "@mikelaferriere/core",
   "version": "1.0.0",
-  "description": "",
+  "description": "Shared module containing logging, metrics and other modules",
   "main": "build/index.js",
+  "repository":"https://github.com/mikelaferriere/core",
   "private": true,
   "scripts": {
     "build": "tsc",
@@ -12,8 +13,8 @@
     "test": "jest ."
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Mike Laferriere",
+  "license": "MIT",
   "dependencies": {
     "@opentelemetry/api": "^1.4.1",
     "@opentelemetry/exporter-jaeger": "^1.14.0",
