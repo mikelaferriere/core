@@ -1,3 +1,5 @@
+/// <reference types="typescript" />
+
 interface RawWeight {
     weight?: number;
     fatFreeMass?: number;
