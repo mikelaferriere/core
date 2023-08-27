@@ -4,7 +4,7 @@
   "description": "Shared module containing logging, metrics and other modules",
   "main": "build/index.js",
   "repository": "https://github.com/mikelaferriere/core",
-  "types": "./build/core.d.ts",
+  "types": "./build/models",
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
