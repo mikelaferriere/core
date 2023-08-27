@@ -1,13 +1,21 @@
 import MQTT, { IClientPublishOptions, QoS } from 'async-mqtt'
 import { gzipSync } from 'zlib'
 
-export const publish = async (
-  broker: string,
-  topic: string,
-  payload: Record<string, any>,
-  qos: QoS = 1,
-  retain = false
-): Promise<void> => {
+interface Configuration {
+  broker: string
+  topic: string
+  payload: Record<string, any>
+  qos?: QoS
+  retain?: boolean
+}
+
+export const publish = async ({
+  broker,
+  topic,
+  payload,
+  qos,
+  retain
+}: Configuration): Promise<void> => {
   const client = await MQTT.connectAsync(broker, {
     clientId: `mqtt_${topic.replace('//', '_')}_${Math.random()
       .toString(16)
@@ -23,8 +31,8 @@ export const publish = async (
   const compressed = gzipSync(JSON.stringify(payload))
 
   const options: IClientPublishOptions = {
-    qos,
-    retain,
+    qos: qos ? qos : 1,
+    retain: retain ? retain : false,
   }
   await client.publish(topic, compressed, options)
   await client.end()

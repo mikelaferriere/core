@@ -10,7 +10,12 @@ import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base'
 import { JaegerExporter } from '@opentelemetry/exporter-jaeger'
 import { WinstonInstrumentation } from '@opentelemetry/instrumentation-winston'
 
-export const configure = (serviceName: string, endpoint: string) => {
+interface Configuration {
+  serviceName: string
+  host: string
+}
+
+export const configure = ({serviceName, host}: Configuration) => {
   const provider = new NodeTracerProvider()
 
   const jaegerExporter = new JaegerExporter({
@@ -20,7 +25,7 @@ export const configure = (serviceName: string, endpoint: string) => {
         value: serviceName,
       },
     ],
-    endpoint
+    endpoint: host
   })
 
   provider.addSpanProcessor(
