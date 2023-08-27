@@ -1,6 +1,6 @@
 {
   "name": "@mikelaferriere/core",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Shared module containing logging, metrics and other modules",
   "main": "build/index.js",
   "repository": "https://github.com/mikelaferriere/core",
