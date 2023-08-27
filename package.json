@@ -1,6 +1,6 @@
 {
   "name": "@mikelaferriere/homelab-core",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Shared module containing logging, metrics and other modules",
   "main": "build/index.js",
   "repository": "https://github.com/mikelaferriere/core",
@@ -15,7 +15,8 @@
     "publish:local": "git tag v$npm_package_version && git push --tags && gh release create v$npm_package_version --generate-notes"
   },
   "files": [
-    "./build"
+    "./build",
+    "./build/models"
   ],
   "keywords": [],
   "author": "Mike Laferriere",
