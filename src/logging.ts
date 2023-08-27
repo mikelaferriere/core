@@ -3,7 +3,7 @@
 import { createLogger, transports, format } from 'winston'
 import LokiTransport from 'winston-loki'
 
-export const configure = (logging_host: string, serviceName: string) => {
+export const configure = (serviceName: string, logging_host: string) => {
   const consoleTransport = new transports.Console({
     format: format.combine(
       format.metadata(),
