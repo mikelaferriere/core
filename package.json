@@ -1,6 +1,6 @@
 {
   "name": "@mikelaferriere/core",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Shared module containing logging, metrics and other modules",
   "main": "build/index.js",
   "repository": "https://github.com/mikelaferriere/core",
@@ -14,9 +14,9 @@
     "test": "jest ."
   },
   "files": [
-    "/build",
-    "/build/api",
-    "/build/models"
+    "./build",
+    "./build/api",
+    "./build/models"
   ],
   "keywords": [],
   "author": "Mike Laferriere",
