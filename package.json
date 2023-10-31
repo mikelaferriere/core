@@ -37,7 +37,7 @@
   "dependencies": {
     "async-mqtt": "2.6.3",
     "axios": "1.6.0",
-    "luxon": "3.4.3",
+    "luxon": "3.4.3"
   },
   "devDependencies": {
     "@opentelemetry/api": "1.4.1",
