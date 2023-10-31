@@ -1,6 +1,6 @@
 {
   "name": "@mikelaferriere/homelab-core",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Shared module containing logging, metrics and other modules",
   "keywords": [],
   "author": "Mike Laferriere",
@@ -31,6 +31,9 @@
   "browser": {
     "@opentelemetry*": false,
     "winston*": false
+  },
+  "publishConfig": {
+    "@mikelaferriere:registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "@opentelemetry/api": "1.4.1",
