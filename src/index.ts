@@ -1,4 +1,4 @@
-export * as Tracing from './tracing'
-export * as Logging from './logging'
+export * as Tracing from './nodetracing'
+export * as Logging from './nodelogging'
 export * as Mqtt from './mqtt'
 export * as Request from './request'
