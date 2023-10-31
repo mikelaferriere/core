@@ -1,6 +1,6 @@
 {
   "name": "@mikelaferriere/homelab-core",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Shared module containing logging, metrics and other modules",
   "keywords": [],
   "author": "Mike Laferriere",
