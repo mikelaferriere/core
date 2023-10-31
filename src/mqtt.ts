@@ -6,7 +6,7 @@ export const publish = async ({
   topic,
   payload,
   qos,
-  retain
+  retain,
 }: MQTTConfiguration): Promise<void> => {
   const client = await MQTT.connectAsync(broker, {
     clientId: `mqtt_${topic.replace('//', '_')}_${Math.random()
