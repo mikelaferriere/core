@@ -25,6 +25,7 @@
     "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
     "prepare:init": "husky install",
     "publish:local": "git tag v$npm_package_version && git push --tags && gh release create v$npm_package_version --generate-notes",
+    "publish": "npm run changeset",
     "test": "jest . --coverage"
   },
   "browser": {
