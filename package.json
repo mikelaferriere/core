@@ -26,6 +26,7 @@
     "prepare:init": "husky install",
     "publish:local": "git tag v$npm_package_version && git push --tags && gh release create v$npm_package_version --generate-notes",
     "publish": "changeset publish",
+    "changeset": "changeset",
     "test": "jest . --coverage"
   },
   "browser": {
