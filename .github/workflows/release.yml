@@ -28,7 +28,9 @@ jobs:
           scope: '@mikelaferriere'
 
       - name: Install Production Dependencies
-        run: npm install --omit=dev
+        run: |
+          npm install --omit=dev
+          npm install @changesets/cli
 
       - name: Create .npmrc
         run: |
