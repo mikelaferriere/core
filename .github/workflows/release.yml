@@ -30,11 +30,14 @@ jobs:
       - name: Install Production Dependencies
         run: npm install --production
 
+      - name: Create .npmrc
+        run: |
+          cat .npmrc > $HOME/.npmrc
+
       - name: Create Release Pull Request or Publish to github packages
         id: changesets
         uses: changesets/action@v1
         with:
           publish: npx changeset publish
-          registry-url: https://npm.pkg.github.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
