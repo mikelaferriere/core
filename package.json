@@ -32,7 +32,8 @@
     "./build/nodetracing": false
   },
   "publishConfig": {
-    "@mikelaferriere:registry": "https://npm.pkg.github.com"
+    "@mikelaferriere:registry": "https://npm.pkg.github.com",
+    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "async-mqtt": "2.6.3",
