@@ -9,5 +9,5 @@ export const fetchSecret = async (token: string, secretPath: string) => {
       'Content-Type': 'application/json',
       Accept: '*/*',
     },
-  })
-}
+  });
+};
