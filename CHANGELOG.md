@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 3.0.2
+
+### Patch Changes
+
+- f3c3104: fixing deployment
+
 ## 3.0.1
 
 ### Patch Changes
