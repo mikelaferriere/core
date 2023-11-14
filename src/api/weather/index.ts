@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Period, WeatherResponse } from '../../models/api/weather'
+import { Period, WeatherResponse } from '../../types/weather'
 
 enum PeriodType {
   Hourly = 'forecast/hourly',

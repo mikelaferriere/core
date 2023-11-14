@@ -2,7 +2,7 @@ import axios from 'axios'
 import { DateTime } from 'luxon'
 
 import * as Config from '../../config'
-import { Weight, WeightComparison } from '../../models/api/withings'
+import { Weight, WeightComparison } from '../../types/withings'
 
 /**
  *

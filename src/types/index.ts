@@ -1,0 +1,10 @@
+export * as Calendar from './calendar';
+export * as Fitbit from './fitbit';
+export * as Hue from './hue';
+export * as Nest from './nest';
+export * as OAuth2 from './oauth2';
+export * as Schedule from './schedule';
+export * as SpeechRecognition from './speechRecognition';
+export * as Sports from './sports';
+export * as Weather from './weather';
+export * as Withings from './withings';
