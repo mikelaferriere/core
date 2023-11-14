@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mikelaferriere/homelab-core"
+    "url": "git+ssh://git@github.com/mikelaferriere/homelab-core.git"
   },
   "main": "build/index.js",
   "types": "./build/index.d.ts",
