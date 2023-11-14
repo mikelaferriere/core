@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 3.1.0
+
+### Minor Changes
+
+- ea243e9: clean up namespaces for types
+
 ## 3.0.5
 
 ### Patch Changes
