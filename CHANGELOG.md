@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 3.0.3
+
+### Patch Changes
+
+- deb48b0: allow public access for pushing
+
 ## 3.0.2
 
 ### Patch Changes
