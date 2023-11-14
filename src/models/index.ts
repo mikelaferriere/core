@@ -1,0 +1,10 @@
+export * as Calendar from './api/calendar';
+export * as Fitbit from './api/fitbit';
+export * as Hue from './/api/hue';
+export * as Nest from './api/nest';
+export * as OAuth2 from './api/oauth2';
+export * as Schedule from './api/schedule';
+export * as SpeechRecognition from './api/speechRecognition';
+export * as Sports from './api/sports';
+export * as Weather from './api/weather';
+export * as Withings from './api/withings';
