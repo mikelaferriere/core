@@ -29,6 +29,10 @@ jobs:
           npm install --omit=dev
           npm install @changesets/cli
 
+      - name: Build Production package
+        run: |
+          npm run deploy
+  
       - name: Create Release Pull Request or Publish to github packages
         id: changesets
         uses: changesets/action@v1
