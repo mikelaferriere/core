@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 3.0.1
+
+### Patch Changes
+
+- 6b0d353: update patch
+
 ## 3.0.0
 
 ### Major Changes
