@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 3.0.0
+
+### Major Changes
+
+- 43831bd: Migrate from private package on github to public package on npm
+
 ## 2.3.0
 
 ### Minor Changes
