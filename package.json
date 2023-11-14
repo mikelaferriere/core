@@ -24,7 +24,6 @@
     "prebuild": "rm -rf build",
     "precommit": "npm run format:check && npm run lint && npm run build && npm run test",
     "prepare:init": "husky install",
-    "publish:local": "git tag v$npm_package_version && git push --tags && gh release create v$npm_package_version --generate-notes",
     "publish": "changeset publish",
     "changeset": "changeset",
     "test": "jest . --coverage"
@@ -32,10 +31,6 @@
   "browser": {
     "./build/nodelogging.js": false,
     "./build/nodetracing": false
-  },
-  "publishConfig": {
-    "@mikelaferriere:registry": "https://npm.pkg.github.com",
-    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "async-mqtt": "2.6.3",
