@@ -1,5 +1,13 @@
 # @mikelaferriere/homelab-core
 
+## 3.0.4
+
+### Patch Changes
+
+- 8775ef9: install changeset after building
+- 79db26c: build package before publishing
+- 1371770: install all deps
+
 ## 3.0.3
 
 ### Patch Changes
