@@ -27,7 +27,8 @@
 			"extensions": [
 				"tabbyml.vscode-tabby",
 				"Orta.vscode-jest",
-				"GitHub.vscode-pull-request-github"
+				"GitHub.vscode-pull-request-github",
+				"github.vscode-github-actions"
 			]
 		}
 	}
