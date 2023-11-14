@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 3.0.5
+
+### Patch Changes
+
+- 7a0e6de: Clean up exports
+
 ## 3.0.4
 
 ### Patch Changes
