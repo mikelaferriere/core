@@ -26,7 +26,7 @@ jobs:
  
       - name: Install Production Dependencies
         run: |
-          npm install --omit=dev
+          npm install
 
       - name: Build Production package
         run: |
