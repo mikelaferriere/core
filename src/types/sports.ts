@@ -18,9 +18,10 @@ export interface BaseScoreboard {
   details?: string
   currentPlay?: Record<string, any>
   isPlayoffMatchup?: boolean
+  metadata?: MLBMetadata | NFLMetadata | NHLMetadata
 }
 
-export interface MLBMetadata {
+interface MLBMetadata {
   balls: number
   strikes: number
   outs: number
@@ -33,17 +34,9 @@ export interface MLBMetadata {
   currentInningOrdinal: string
 }
 
-export interface MLBScoreboard extends BaseScoreboard {
-  metadata?: MLBMetadata
-}
+interface NHLMetadata {}
 
-export interface NHLMetadata {}
-
-export interface NHLScoreboard extends BaseScoreboard {
-  metadata?: NHLMetadata
-}
-
-export interface NFLMetadata {
+interface NFLMetadata {
   yardLine: number
   down: number
   distance: number
@@ -54,10 +47,6 @@ export interface NFLMetadata {
   homeTimeouts: number
   awayTimeouts: number
   possessionArrow: string
-}
-
-export interface NFLScoreboard extends BaseScoreboard {
-  metadata?: NFLMetadata
 }
 
 export interface FavoriteTeam {
