@@ -54,6 +54,29 @@ const mapToScoreboard = (scoreboard: Types.BaseScoreboard) => {
 const enrichWithMetadata =
   (league: Enums.League) =>
   (scoreboards: BaseScoreboard[]): Promise<BaseScoreboard[]> => {
+
+    const createMetadata = (league: Enums.League, summary: Types.BaseGameDetails) => {
+        if (league === Enums.League.NFL) {
+          const current = summary.drives?.current
+          if (!current) return undefined
+
+          const mostRecentPlay = current.plays.reverse()[0]
+
+          return {
+            yardLine: mostRecentPlay.end?.yardLine,
+            down: mostRecentPlay.end?.down,
+            distance: mostRecentPlay.end?.distance,
+            downDistanceText: mostRecentPlay.end?.downDistanceText,
+            shortDownDistanceText: mostRecentPlay.end?.shortDownDistanceText,
+            possessionText: mostRecentPlay.end?.possessionText,
+            isRedZone: mostRecentPlay.end?.yardsToEndzone && mostRecentPlay.end?.yardsToEndzone <= 20,
+            homeTimeouts: 0,
+            awayTimeouts: 0,
+            possessionArrow: current.team.abbreviation,
+          }
+        }
+    }
+
     return Promise.all(
       scoreboards.map((scoreboard) => {
         if (!scoreboard.id) return Promise.resolve(scoreboard)
@@ -62,7 +85,7 @@ const enrichWithMetadata =
           .then((summary) => {
             return {
               ...scoreboard,
-              metadata: {},
+              metadata: createMetadata(league, summary),
             }
           })
           .catch((error) => {
