@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.1.0
+
+### Minor Changes
+
+- 0f0efa3: move sports logic into homelab-core
+
 ## 4.0.0
 
 ### Major Changes
