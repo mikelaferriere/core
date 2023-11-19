@@ -1,5 +1,15 @@
 # @mikelaferriere/homelab-core
 
+## 4.0.0
+
+### Major Changes
+
+- 7c9c291: update package versions to fix vulnerabilities
+
+### Minor Changes
+
+- 114903b: add sports module
+
 ## 3.1.0
 
 ### Minor Changes
