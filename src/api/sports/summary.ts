@@ -2,7 +2,6 @@ import { Enums, Summary, Types } from '@mikelaferriere/espn-api'
 import { ScoringPlay, Team } from "../../types/sports";
 
 const createTeam = (team: Types.Team): Team => {
-    console.dir()
     return {
         abbr: team.abbreviation,
         id: team.id,
@@ -19,23 +18,27 @@ export const fetch = (
 ): Promise<ScoringPlay[]> =>
     Summary.fetch(league, id)
       .then((summary) => {
-        const homeTeam = createTeam(summary.boxscore.teams[0].team)
-        const awayTeam = createTeam(summary.boxscore.teams[1].team)    
+        const homeTeam = createTeam(summary.boxscore.teams[1].team)
+        const awayTeam = createTeam(summary.boxscore.teams[0].team)    
     
         const scoringPlays = league === Enums.League.NFL ? (
             summary.drives?.previous
               .filter(({isScore}) => isScore)
               .map(({plays}) => plays)
               .flatMap((plays) => plays.filter(({scoringPlay}) => scoringPlay)) ?? []
+        ) : league === Enums.League.MLB ? (
+            summary.plays.filter(({type, scoringPlay}) => scoringPlay && type.text === "Play Result")
         ) : summary.plays.filter(({scoringPlay}) => scoringPlay)
-    
+
         return scoringPlays
           .map((play): ScoringPlay => {
             return {
                 id: play.id,
                 awayTeam,
                 homeTeam,
-                scoringTeam: homeTeam.id === play.team?.id ? "home" : "away",
+                scoringTeam: play.team?.id ? (
+                    homeTeam.id === play.team?.id ? "home" : "away"
+                ) : play.end?.team.id === homeTeam.id ? "home" : "away",
                 result: {
                     description: play.text,
                     team: play.team,
