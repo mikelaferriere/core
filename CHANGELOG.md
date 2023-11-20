@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.4
+
+### Patch Changes
+
+- 118be52: fix summary detail view
+
 ## 4.2.3
 
 ### Patch Changes
