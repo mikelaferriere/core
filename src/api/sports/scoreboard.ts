@@ -33,7 +33,7 @@ const createTeam = (
   }
 }
 
-const mapToScoreboard = (scoreboard: Types.BaseScoreboard) => {
+const mapToScoreboard = (scoreboard: Types.BaseScoreboard): BaseScoreboard[] => {
   return scoreboard.events.map((event) => {
     const competitors = event.competitions[0].competitors
 
@@ -45,8 +45,7 @@ const mapToScoreboard = (scoreboard: Types.BaseScoreboard) => {
       status: event.status.type.description,
       startDate: event.date,
       details: event.status.type.shortDetail,
-      currentPlay: undefined,
-      isPlayoffMatchup: event.competitions[0].conferenceCompetition,
+      isPlayoffMatchup: event.competitions[0].conferenceCompetition !== undefined ? event.competitions[0].conferenceCompetition : false,
     }
   })
 }

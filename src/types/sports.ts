@@ -16,8 +16,7 @@ export interface BaseScoreboard {
   status: string
   startDate: string
   details?: string
-  currentPlay?: Record<string, any>
-  isPlayoffMatchup?: boolean
+  isPlayoffMatchup: boolean
   metadata?: MLBMetadata | NFLMetadata | NHLMetadata
 }
 
