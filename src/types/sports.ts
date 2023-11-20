@@ -77,6 +77,7 @@ export interface DbPlay {
 }
 
 export interface ScoringPlay {
+  id: string
   homeTeam: Team
   awayTeam: Team
   scoringTeam: string

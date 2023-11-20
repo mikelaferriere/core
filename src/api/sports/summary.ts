@@ -30,6 +30,7 @@ export const fetch = async (
     return scoringPlays
       .map((play): ScoringPlay => {
         return {
+            id: play.id,
             awayTeam,
             homeTeam,
             scoringTeam: homeTeam.id === play.team?.id ? "home" : "away",
