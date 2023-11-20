@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.2
+
+### Patch Changes
+
+- 88180dd: fix Summary function
+
 ## 4.2.1
 
 ### Patch Changes
