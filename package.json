@@ -33,7 +33,7 @@
     "./build/nodetracing": false
   },
   "dependencies": {
-    "@mikelaferriere/espn-api": "^0.6.2",
+    "@mikelaferriere/espn-api": "^0.6.4",
     "async-mqtt": "^2.6.3",
     "axios": "^1.6.2",
     "luxon": "^3.4.4"

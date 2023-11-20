@@ -51,9 +51,8 @@ const mapToScoreboard = (scoreboard: Types.BaseScoreboard) => {
   })
 }
 
-const enrichWithMetadata =
-  (league: Enums.League) =>
-  (scoreboards: BaseScoreboard[]): Promise<BaseScoreboard[]> => {
+const enrichWithMetadata = (league: Enums.League) =>
+  async (scoreboards: BaseScoreboard[]): Promise<BaseScoreboard[]> => {
 
     const createMetadata = (league: Enums.League, summary: Types.BaseGameDetails) => {
         if (league === Enums.League.NFL) {
@@ -75,23 +74,39 @@ const enrichWithMetadata =
             possessionArrow: current.team.abbreviation,
           }
         }
+
+        if (league === Enums.League.MLB) {
+            const mostRecentPlay = summary.plays.reverse()[0]
+
+            return {
+                balls: mostRecentPlay.resultCount?.balls,
+                strikes: mostRecentPlay.resultCount?.strikes,
+                outs: mostRecentPlay.outs,
+                manOnFirst: false,
+                manOnSecond: false,
+                manOnThird: false,
+                topInning: false,
+                inningHalf: "top",
+                currentInning: mostRecentPlay.period.number,
+                currentInningOrdinal: `${mostRecentPlay.period.type} ${mostRecentPlay.period.displayName}`
+            }
+        }
     }
 
     return Promise.all(
-      scoreboards.map((scoreboard) => {
+      scoreboards.map(async (scoreboard) => {
         if (!scoreboard.id) return Promise.resolve(scoreboard)
 
-        return Summary.fetch(league, scoreboard.id)
-          .then((summary) => {
-            return {
-              ...scoreboard,
-              metadata: createMetadata(league, summary),
-            }
-          })
-          .catch((error) => {
-            console.error(error)
-            return scoreboard
-          })
+        try {
+              const summary = await Summary.fetch(league, scoreboard.id)
+              return {
+                  ...scoreboard,
+                  metadata: createMetadata(league, summary),
+              }
+          } catch (error) {
+              console.error(error)
+              return scoreboard
+          }
       })
     )
   }
