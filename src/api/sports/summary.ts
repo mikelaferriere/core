@@ -2,10 +2,11 @@ import { Enums, Summary, Types } from '@mikelaferriere/espn-api'
 import { ScoringPlay, Team } from "../../types/sports";
 
 const createTeam = (team: Types.Team): Team => {
+    console.dir()
     return {
         abbr: team.abbreviation,
         id: team.id,
-        link: team.links[0].href,
+        link: team.links && team.links[0].href,
         logo: team.logo,
         name: team.name,
         record: "",
@@ -44,8 +45,8 @@ export const fetch = (
                 about: {
                     id,
                     type: play.type.text,
-                    period: play.period.displayName,
-                    time: play.clock.displayValue,
+                    period: play.period.number,
+                    time: play.clock ? play.clock.displayValue : play.wallclock,
                     startDate: play.wallclock
                 }
             }
