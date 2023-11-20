@@ -1,5 +1,12 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.3
+
+### Patch Changes
+
+- 5a9af72: fix build issue
+- 994af97: fix sport summary
+
 ## 4.2.2
 
 ### Patch Changes
