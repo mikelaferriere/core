@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.0
+
+### Minor Changes
+
+- 5a10896: Implement Summary.fetch function
+
 ## 4.1.0
 
 ### Minor Changes
