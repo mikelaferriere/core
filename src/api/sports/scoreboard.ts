@@ -88,7 +88,7 @@ const enrichWithMetadata = (league: Enums.League) =>
                 topInning: false,
                 inningHalf: "top",
                 currentInning: mostRecentPlay.period.number,
-                currentInningOrdinal: `${mostRecentPlay.period.type} ${mostRecentPlay.period.displayName}`
+                currentInningOrdinal: `${mostRecentPlay.period.type} ${mostRecentPlay.period.displayValue}`
             }
         }
     }
