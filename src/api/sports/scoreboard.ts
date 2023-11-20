@@ -33,7 +33,9 @@ const createTeam = (
   }
 }
 
-const mapToScoreboard = (scoreboard: Types.BaseScoreboard): BaseScoreboard[] => {
+const mapToScoreboard = (
+  scoreboard: Types.BaseScoreboard
+): BaseScoreboard[] => {
   return scoreboard.events.map((event) => {
     const competitors = event.competitions[0].competitors
 
@@ -45,51 +47,59 @@ const mapToScoreboard = (scoreboard: Types.BaseScoreboard): BaseScoreboard[] => 
       status: event.status.type.description,
       startDate: event.date,
       details: event.status.type.shortDetail,
-      isPlayoffMatchup: event.competitions[0].conferenceCompetition !== undefined ? event.competitions[0].conferenceCompetition : false,
+      isPlayoffMatchup:
+        event.competitions[0].conferenceCompetition !== undefined
+          ? event.competitions[0].conferenceCompetition
+          : false,
     }
   })
 }
 
-const enrichWithMetadata = (league: Enums.League) =>
+const enrichWithMetadata =
+  (league: Enums.League) =>
   async (scoreboards: BaseScoreboard[]): Promise<BaseScoreboard[]> => {
+    const createMetadata = (
+      league: Enums.League,
+      summary: Types.BaseGameDetails
+    ) => {
+      if (league === Enums.League.NFL) {
+        const current = summary.drives?.current
+        if (!current) return undefined
 
-    const createMetadata = (league: Enums.League, summary: Types.BaseGameDetails) => {
-        if (league === Enums.League.NFL) {
-          const current = summary.drives?.current
-          if (!current) return undefined
+        const mostRecentPlay = current.plays.reverse()[0]
 
-          const mostRecentPlay = current.plays.reverse()[0]
-
-          return {
-            yardLine: mostRecentPlay.end?.yardLine,
-            down: mostRecentPlay.end?.down,
-            distance: mostRecentPlay.end?.distance,
-            downDistanceText: mostRecentPlay.end?.downDistanceText,
-            shortDownDistanceText: mostRecentPlay.end?.shortDownDistanceText,
-            possessionText: mostRecentPlay.end?.possessionText,
-            isRedZone: mostRecentPlay.end?.yardsToEndzone && mostRecentPlay.end?.yardsToEndzone <= 20,
-            homeTimeouts: 0,
-            awayTimeouts: 0,
-            possessionArrow: current.team.abbreviation,
-          }
+        return {
+          yardLine: mostRecentPlay.end?.yardLine,
+          down: mostRecentPlay.end?.down,
+          distance: mostRecentPlay.end?.distance,
+          downDistanceText: mostRecentPlay.end?.downDistanceText,
+          shortDownDistanceText: mostRecentPlay.end?.shortDownDistanceText,
+          possessionText: mostRecentPlay.end?.possessionText,
+          isRedZone:
+            mostRecentPlay.end?.yardsToEndzone &&
+            mostRecentPlay.end?.yardsToEndzone <= 20,
+          homeTimeouts: 0,
+          awayTimeouts: 0,
+          possessionArrow: current.team.abbreviation,
         }
+      }
 
-        if (league === Enums.League.MLB) {
-            const mostRecentPlay = summary.plays.reverse()[0]
+      if (league === Enums.League.MLB) {
+        const mostRecentPlay = summary.plays.reverse()[0]
 
-            return {
-                balls: mostRecentPlay.resultCount?.balls,
-                strikes: mostRecentPlay.resultCount?.strikes,
-                outs: mostRecentPlay.outs,
-                manOnFirst: false,
-                manOnSecond: false,
-                manOnThird: false,
-                topInning: false,
-                inningHalf: "top",
-                currentInning: mostRecentPlay.period.number,
-                currentInningOrdinal: `${mostRecentPlay.period.type} ${mostRecentPlay.period.displayValue}`
-            }
+        return {
+          balls: mostRecentPlay.resultCount?.balls,
+          strikes: mostRecentPlay.resultCount?.strikes,
+          outs: mostRecentPlay.outs,
+          manOnFirst: false,
+          manOnSecond: false,
+          manOnThird: false,
+          topInning: false,
+          inningHalf: 'top',
+          currentInning: mostRecentPlay.period.number,
+          currentInningOrdinal: `${mostRecentPlay.period.type} ${mostRecentPlay.period.displayValue}`,
         }
+      }
     }
 
     return Promise.all(
@@ -97,15 +107,15 @@ const enrichWithMetadata = (league: Enums.League) =>
         if (!scoreboard.id) return Promise.resolve(scoreboard)
 
         try {
-              const summary = await Summary.fetch(league, scoreboard.id)
-              return {
-                  ...scoreboard,
-                  metadata: createMetadata(league, summary),
-              }
-          } catch (error) {
-              console.error(error)
-              return scoreboard
+          const summary = await Summary.fetch(league, scoreboard.id)
+          return {
+            ...scoreboard,
+            metadata: createMetadata(league, summary),
           }
+        } catch (error) {
+          console.error(error)
+          return scoreboard
+        }
       })
     )
   }
