@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.5
+
+### Patch Changes
+
+- d71a338: update BaseScoreboard type to be more accurate
+
 ## 4.2.4
 
 ### Patch Changes
