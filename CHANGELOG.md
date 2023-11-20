@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.1
+
+### Patch Changes
+
+- 062121b: add id to ScoringPlay
+
 ## 4.2.0
 
 ### Minor Changes
