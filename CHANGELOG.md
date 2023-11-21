@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.7
+
+### Patch Changes
+
+- 7991967: simplify dbscore type
+
 ## 4.2.6
 
 ### Patch Changes
