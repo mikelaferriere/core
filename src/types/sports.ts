@@ -60,19 +60,10 @@ export interface FavoriteTeam {
 }
 
 export interface DbScore {
-  id: number
   favoriteteam_id: number
   acknowledged: boolean
-  datetime: Date
   score_unique_id: string
-  info: ScoringPlay
-}
-
-export interface DbPlay {
-  id: string
-  gameid: number
-  league: string
-  plays: Record<string, any>[]
+  play: any
 }
 
 export interface ScoringPlay {
