@@ -1,5 +1,12 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.7
+
+### Patch Changes
+
+- 1461384: update dbscore type and throw errors on errors
+- 7991967: simplify dbscore type
+
 ## 4.2.6
 
 ### Patch Changes
