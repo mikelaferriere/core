@@ -71,8 +71,7 @@ export const fetch = (
       })
     })
     .catch((error) => {
-      console.error(error)
-      return []
+      throw error
     })
 
 /**
@@ -112,6 +111,5 @@ export const scoringPlaysForTeam = async (
     return scoringPlays.filter((play) => play.team?.id === teamId || play.end?.team?.id === teamId)
    })
   .catch((error) => {
-    console.error(error)
-    return []
+    throw error
   })

@@ -125,6 +125,5 @@ export const fetch = (league: string): Promise<BaseScoreboard[]> =>
     .then(mapToScoreboard)
     .then(enrichWithMetadata(leagueStringToEnum(league)))
     .catch((error) => {
-      console.error(error)
-      return []
+      throw error
     })
