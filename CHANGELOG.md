@@ -1,5 +1,12 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.6
+
+### Patch Changes
+
+- 2bdd28a: add function to get all scoring plays for a specific team
+- b840171: add function to get all scoring plays for a specific team
+
 ## 4.2.5
 
 ### Patch Changes
