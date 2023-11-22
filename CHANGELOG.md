@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 4.2.8
+
+### Patch Changes
+
+- ccfeb9c: update Period type for weather
+
 ## 4.2.7
 
 ### Patch Changes
