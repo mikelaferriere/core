@@ -27,6 +27,8 @@ export interface Period {
   icon: string
   shortForecast: string
   detailedForecast: string
+  hi?: number
+  low?: number
 }
 
 export interface WeatherResponse {
