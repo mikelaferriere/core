@@ -20,7 +20,7 @@ export const configure = ({ serviceName, host }: ServiceConfiguration) => {
         value: serviceName,
       },
     ],
-    endpoint: host,
+    endpoint: `${host}:14268/api/traces`,
   })
 
   provider.addSpanProcessor(

@@ -1,9 +1,15 @@
 'use strict'
 
-import { createLogger, transports, format } from 'winston'
+import { createLogger, transports, format, Logger } from 'winston'
 import LokiTransport from 'winston-loki'
 
-export const configure = ({ serviceName, host }: ServiceConfiguration) => {
+let logger: Logger;
+
+const configure = ({ serviceName, host, minLogLevel }: ServiceConfiguration): void => {
+  if (logger) {
+    return
+  }
+
   const consoleTransport = new transports.Console({
     format: format.combine(
       format.metadata(),
@@ -18,25 +24,24 @@ export const configure = ({ serviceName, host }: ServiceConfiguration) => {
   })
 
   const lokiTransport = new LokiTransport({
-    host,
+    host: `${host}:3100`,
     labels: { app: serviceName },
     json: true,
+    format: format.json(),
+    replaceTimestamp: true,
+    onConnectionError: (error) => console.error(error),
   })
 
-  const logger = createLogger({
-    level: 'debug',
+  logger = createLogger({
+    level: minLogLevel?.toString() || LogLevel.Debug.toString(),
     transports: [consoleTransport, lokiTransport],
     defaultMeta: {
       service: serviceName,
     },
   })
+}
 
-  // Override the base console log with winston
-  console.log = (...args) => logger.info.call(logger, args)
-  console.debug = (...args) => logger.debug.call(logger, args)
-  console.info = (...args) => logger.info.call(logger, args)
-  console.warn = (...args) => logger.warn.call(logger, args)
-  console.error = (...args) => logger.error.call(logger, args)
-
-  return logger
+export const getLogger = (configuration: ServiceConfiguration): Logger => {
+  configure(configuration)
+  return logger;
 }
