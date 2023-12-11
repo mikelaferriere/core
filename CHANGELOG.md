@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.0.3
+
+### Patch Changes
+
+- 7f58b8f: lint and format
+
 ## 5.0.2
 
 ### Patch Changes
