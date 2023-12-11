@@ -3,7 +3,7 @@ export enum LogLevel {
   Info = 'info',
   Warning = 'warning',
   Error = 'error',
-  Fatal = 'fatal'
+  Fatal = 'fatal',
 }
 
 export interface ServiceConfiguration {

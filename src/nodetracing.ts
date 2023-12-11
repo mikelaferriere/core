@@ -11,7 +11,11 @@ import { JaegerExporter } from '@opentelemetry/exporter-jaeger'
 import { WinstonInstrumentation } from '@opentelemetry/instrumentation-winston'
 import { LogLevel, ServiceConfiguration } from './types/service'
 
-export const configure = ({ serviceName, host, minLogLevel = LogLevel.Debug }: ServiceConfiguration) => {
+export const configure = ({
+  serviceName,
+  host,
+  minLogLevel = LogLevel.Debug,
+}: ServiceConfiguration) => {
   const provider = new NodeTracerProvider()
 
   const jaegerExporter = new JaegerExporter({

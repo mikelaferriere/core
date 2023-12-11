@@ -20,7 +20,7 @@ const createTeam = (team: Types.Team): Team => {
  */
 export const fetch = (
   league: Enums.League,
-  id: string,
+  id: string
 ): Promise<ScoringPlay[]> =>
   Summary.fetch(league, id)
     .then((summary) => {
@@ -86,30 +86,34 @@ export const scoringPlaysForTeam = async (
   eventId: string,
   teamAbbreviation: string
 ): Promise<Types.Play[]> =>
- Summary.fetch(league, eventId)
-   .then((summary) => {
-    const teamId = summary.boxscore.teams.find(({team}) => team.abbreviation === teamAbbreviation)?.team.id
+  Summary.fetch(league, eventId)
+    .then((summary) => {
+      const teamId = summary.boxscore.teams.find(
+        ({ team }) => team.abbreviation === teamAbbreviation
+      )?.team.id
 
-    const scoringPlays =
-      league === Enums.League.NFL
-      ? summary.drives?.previous
-          .filter(({ isScore }) => isScore)
-          .map(({ plays }) => plays)
-          .flatMap((plays) =>
-            plays.filter(({ scoringPlay }) => scoringPlay)
-          ) ?? []
-      : league === Enums.League.MLB
-      ? summary.plays.filter(
-          ({ type, scoringPlay }) =>
-            scoringPlay && type.text === 'Play Result'
-        )
-      : summary.plays.filter(({ scoringPlay }) => scoringPlay)
+      const scoringPlays =
+        league === Enums.League.NFL
+          ? summary.drives?.previous
+              .filter(({ isScore }) => isScore)
+              .map(({ plays }) => plays)
+              .flatMap((plays) =>
+                plays.filter(({ scoringPlay }) => scoringPlay)
+              ) ?? []
+          : league === Enums.League.MLB
+          ? summary.plays.filter(
+              ({ type, scoringPlay }) =>
+                scoringPlay && type.text === 'Play Result'
+            )
+          : summary.plays.filter(({ scoringPlay }) => scoringPlay)
 
-    return {teamId, scoringPlays}
-  })
-  .then(({teamId, scoringPlays}) => {
-    return scoringPlays.filter((play) => play.team?.id === teamId || play.end?.team?.id === teamId)
-   })
-  .catch((error) => {
-    throw error
-  })
+      return { teamId, scoringPlays }
+    })
+    .then(({ teamId, scoringPlays }) => {
+      return scoringPlays.filter(
+        (play) => play.team?.id === teamId || play.end?.team?.id === teamId
+      )
+    })
+    .catch((error) => {
+      throw error
+    })

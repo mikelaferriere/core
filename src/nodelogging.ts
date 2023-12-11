@@ -4,9 +4,13 @@ import { createLogger, transports, format, Logger } from 'winston'
 import LokiTransport from 'winston-loki'
 import { LogLevel, ServiceConfiguration } from './types/service'
 
-let logger: Logger;
+let logger: Logger
 
-const configure = ({ serviceName, host, minLogLevel = LogLevel.Debug }: ServiceConfiguration): void => {
+const configure = ({
+  serviceName,
+  host,
+  minLogLevel = LogLevel.Debug,
+}: ServiceConfiguration): void => {
   if (logger) {
     return
   }
@@ -44,5 +48,5 @@ const configure = ({ serviceName, host, minLogLevel = LogLevel.Debug }: ServiceC
 
 export const getLogger = (configuration: ServiceConfiguration): Logger => {
   configure(configuration)
-  return logger;
+  return logger
 }
