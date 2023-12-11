@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.0.1
+
+### Patch Changes
+
+- 431f995: export service types
+
 ## 5.0.0
 
 ### Major Changes
