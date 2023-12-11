@@ -9,6 +9,7 @@ import { NodeTracerProvider, SpanExporter } from '@opentelemetry/sdk-trace-node'
 import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base'
 import { JaegerExporter } from '@opentelemetry/exporter-jaeger'
 import { WinstonInstrumentation } from '@opentelemetry/instrumentation-winston'
+import { ServiceConfiguration } from './types/service'
 
 export const configure = ({ serviceName, host }: ServiceConfiguration) => {
   const provider = new NodeTracerProvider()

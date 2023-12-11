@@ -2,6 +2,7 @@
 
 import { createLogger, transports, format, Logger } from 'winston'
 import LokiTransport from 'winston-loki'
+import { LogLevel, ServiceConfiguration } from './types/service'
 
 let logger: Logger;
 
