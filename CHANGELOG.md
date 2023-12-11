@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.0.0
+
+### Major Changes
+
+- bfd52a2: Revamp logging and tracing modules. change signatures
+
 ## 4.2.8
 
 ### Patch Changes
