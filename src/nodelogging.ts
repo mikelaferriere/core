@@ -6,7 +6,7 @@ import { LogLevel, ServiceConfiguration } from './types/service'
 
 let logger: Logger;
 
-const configure = ({ serviceName, host, minLogLevel }: ServiceConfiguration): void => {
+const configure = ({ serviceName, host, minLogLevel = LogLevel.Debug }: ServiceConfiguration): void => {
   if (logger) {
     return
   }
