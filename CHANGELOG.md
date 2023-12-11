@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.0.2
+
+### Patch Changes
+
+- a42a081: add default to log level
+
 ## 5.0.1
 
 ### Patch Changes
