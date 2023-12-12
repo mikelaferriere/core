@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.2
+
+### Patch Changes
+
+- c141648: fix ternary
+
 ## 5.2.1
 
 ### Patch Changes
