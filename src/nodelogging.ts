@@ -34,6 +34,7 @@ const configure = ({
 
   return createLogger({
     level: String(minLogLevel),
+    format: format.json(),
     transports: [consoleTransport, lokiTransport],
   })
 }
