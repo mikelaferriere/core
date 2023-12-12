@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.3
+
+### Patch Changes
+
+- 1744b85: cast level to string
+
 ## 5.2.2
 
 ### Patch Changes
