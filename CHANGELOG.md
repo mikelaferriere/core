@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.0
+
+### Minor Changes
+
+- 894b0e8: revert changes to console
+
 ## 5.1.0
 
 ### Minor Changes
