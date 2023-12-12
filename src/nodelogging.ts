@@ -27,14 +27,12 @@ const configure = ({
     host: `${host}:3100`,
     labels: { app: serviceName },
     json: true,
-    format: format.json(),
     replaceTimestamp: true,
-    onConnectionError: (error) => console.error(error),
+    onConnectionError: console.error,
   })
 
   return createLogger({
     level: String(minLogLevel),
-    format: format.json(),
     transports: [consoleTransport, lokiTransport],
   })
 }
