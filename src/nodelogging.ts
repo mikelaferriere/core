@@ -4,16 +4,11 @@ import { createLogger, transports, format, Logger } from 'winston'
 import LokiTransport from 'winston-loki'
 import { LogLevel, ServiceConfiguration } from './types/service'
 
-let logger: Logger
-
 const configure = ({
   serviceName,
   host,
   minLogLevel = LogLevel.Debug,
-}: ServiceConfiguration): void => {
-  if (logger) {
-    return
-  }
+}: ServiceConfiguration): Logger => {
 
   const consoleTransport = new transports.Console({
     format: format.combine(
@@ -37,7 +32,7 @@ const configure = ({
     onConnectionError: (error) => console.error(error),
   })
 
-  logger = createLogger({
+  return createLogger({
     level: minLogLevel || LogLevel.Debug,
     transports: [consoleTransport, lokiTransport],
     defaultMeta: {
@@ -47,6 +42,5 @@ const configure = ({
 }
 
 export const getLogger = (configuration: ServiceConfiguration): Logger => {
-  configure(configuration)
-  return logger
+  return configure(configuration)
 }
