@@ -85,6 +85,7 @@ const enrichWithMetadata =
       }
 
       if (league === Enums.League.MLB) {
+        if (!summary.plays) return {}
         const mostRecentPlay = summary.plays.reverse()[0]
 
         return {
