@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.4
+
+### Patch Changes
+
+- b1e533b: remove unecessary metadataa
+
 ## 5.2.3
 
 ### Patch Changes
