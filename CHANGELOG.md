@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.0.4
+
+### Patch Changes
+
+- a86683e: don't fail on undefined plays
+
 ## 5.0.3
 
 ### Patch Changes
