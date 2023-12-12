@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.1.0
+
+### Minor Changes
+
+- 0a66a90: use Console instead of loki
+
 ## 5.0.4
 
 ### Patch Changes
