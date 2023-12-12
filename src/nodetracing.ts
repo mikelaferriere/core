@@ -14,7 +14,6 @@ import { LogLevel, ServiceConfiguration } from './types/service'
 export const configure = ({
   serviceName,
   host,
-  minLogLevel = LogLevel.Debug,
 }: ServiceConfiguration) => {
   const provider = new NodeTracerProvider()
 
