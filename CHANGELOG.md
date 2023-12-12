@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.1
+
+### Patch Changes
+
+- 4209dcb: return logger instead of singleton
+
 ## 5.2.0
 
 ### Minor Changes
