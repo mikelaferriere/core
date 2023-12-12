@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.5
+
+### Patch Changes
+
+- 6f748fc: make global format json
+
 ## 5.2.4
 
 ### Patch Changes
