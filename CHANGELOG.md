@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.2.6
+
+### Patch Changes
+
+- 3a4dd60: another effort
+
 ## 5.2.5
 
 ### Patch Changes
