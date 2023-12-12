@@ -35,9 +35,6 @@ const configure = ({
   return createLogger({
     level: String(minLogLevel),
     transports: [consoleTransport, lokiTransport],
-    defaultMeta: {
-      service: serviceName,
-    },
   })
 }
 
