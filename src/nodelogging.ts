@@ -15,9 +15,8 @@ const configure = ({
     return
   }
 
-  const format_ = host.includes("10.")
-    ? format.json()
-    : format.combine(
+  const consoleTransport = new transports.Console({
+    format: format.combine(
       format.metadata(),
       format.timestamp(),
       format.colorize(),
@@ -26,27 +25,21 @@ const configure = ({
           metadata
         )}`
       })
-    )
-
-  const consoleTransport = new transports.Console({
-    format: format_
+    ),
   })
 
-  // const lokiTransport = new LokiTransport({
-  //   host: `${host}:3100`,
-  //   labels: { app: serviceName },
-  //   json: true,
-  //   format: format.json(),
-  //   replaceTimestamp: true,
-  //   onConnectionError: (error) => console.error(error),
-  // })
-
-  // const transports_ = host.includes("10.") 
-  //   ? [consoleTransport, lokiTransport]
+  const lokiTransport = new LokiTransport({
+    host: `${host}:3100`,
+    labels: { app: serviceName },
+    json: true,
+    format: format.json(),
+    replaceTimestamp: true,
+    onConnectionError: (error) => console.error(error),
+  })
 
   logger = createLogger({
     level: minLogLevel || LogLevel.Debug,
-    transports: [consoleTransport],
+    transports: [consoleTransport, lokiTransport],
     defaultMeta: {
       service: serviceName,
     },
