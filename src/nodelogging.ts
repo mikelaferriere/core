@@ -33,7 +33,7 @@ const configure = ({
   })
 
   return createLogger({
-    level: minLogLevel || LogLevel.Debug,
+    level: minLogLevel ?? LogLevel.Debug,
     transports: [consoleTransport, lokiTransport],
     defaultMeta: {
       service: serviceName,
