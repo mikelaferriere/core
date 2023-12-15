@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.4.4
+
+### Patch Changes
+
+- e3ad90d: fix log
+
 ## 5.4.3
 
 ### Patch Changes
