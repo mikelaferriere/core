@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.4.0
+
+### Minor Changes
+
+- c3c452b: fix versioning
+
 ## 5.3.0
 
 ### Minor Changes
