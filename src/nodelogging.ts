@@ -6,7 +6,6 @@ import { LogLevel, ServiceConfiguration } from './types/service'
 
 const configure = ({
   serviceName,
-  app,
   host,
   minLogLevel = LogLevel.Debug,
 }: ServiceConfiguration): Logger => {
@@ -16,8 +15,10 @@ const configure = ({
       format.metadata(),
       format.timestamp(),
       format.colorize(),
-      format.printf(({ timestamp, level, message }) => {
-        return `[${timestamp}] [${app}] ${level}: ${message}`
+      format.printf(({ timestamp, level, message, metadata }) => {
+        return `[${timestamp}] ${level}: ${message}. ${JSON.stringify(
+          metadata
+        )}`
       })
     ),
   })
@@ -26,14 +27,6 @@ const configure = ({
     host: `${host}:3100`,
     labels: { app: serviceName },
     json: true,
-    format: format.combine(
-      format.timestamp(),
-      format.colorize(),
-      format((info, opts) => {
-        info.message = `[${info.timestamp}] [${app}] ${info.level}: ${info.message}`;
-        return info;
-      })()
-    ),
     replaceTimestamp: true,
     onConnectionError: console.error,
   })
