@@ -27,12 +27,12 @@ const configure = ({
     labels: { app: serviceName },
     json: true,
     format: format.combine(
-      format.metadata(),
       format.timestamp(),
       format.colorize(),
-      format.printf(({ level, message }) => {
-        return JSON.stringify({ level, message: `[${app}] ${level}: ${message}`})
-      })
+      format((info, opts) => {
+        info.message = `[${info.timestamp}] [${app}] ${info.level}: ${info.message}`;
+        return info;
+      })()
     ),
     replaceTimestamp: true,
     onConnectionError: console.error,
