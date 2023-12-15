@@ -8,6 +8,7 @@ export enum LogLevel {
 
 export interface ServiceConfiguration {
   serviceName: string
+  app: string
   host: string
   minLogLevel?: LogLevel
 }
