@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.4.2
+
+### Patch Changes
+
+- 866a6b5: update log message
+
 ## 5.4.1
 
 ### Patch Changes
