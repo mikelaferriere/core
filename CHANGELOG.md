@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.4.1
+
+### Patch Changes
+
+- daad7b2: fix log
+
 ## 5.4.0
 
 ### Minor Changes
