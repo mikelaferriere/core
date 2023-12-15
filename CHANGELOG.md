@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.4.3
+
+### Patch Changes
+
+- d21a1ad: update log
+
 ## 5.4.2
 
 ### Patch Changes
