@@ -31,7 +31,7 @@ const configure = ({
       format.timestamp(),
       format.colorize(),
       format.printf(({ level, message }) => {
-        return `[${app}] ${level}: ${message}`
+        return JSON.stringify({ level, message: `[${app}] ${level}: ${message}`})
       })
     ),
     replaceTimestamp: true,
