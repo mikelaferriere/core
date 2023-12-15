@@ -1,5 +1,15 @@
 # @mikelaferriere/homelab-core
 
+## 5.3.0
+
+### Minor Changes
+
+- 00bb2f0: update format
+
+### Patch Changes
+
+- 28ba90f: update type for fixing build
+
 ## 5.2.6
 
 ### Patch Changes
