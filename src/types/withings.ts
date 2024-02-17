@@ -13,3 +13,9 @@ export interface WeightComparison {
   updatedDate: Date
   rawWeights: Weight[]
 }
+
+export enum By {
+  Date,
+  Latest,
+  Yesterday
+}

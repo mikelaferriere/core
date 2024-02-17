@@ -2,7 +2,7 @@ import axios from 'axios'
 import { DateTime } from 'luxon'
 
 import * as Config from '../../config'
-import { Weight, WeightComparison } from '../../types/withings'
+import { By, Weight, WeightComparison } from '../../types/withings'
 
 /**
  *
@@ -28,6 +28,49 @@ export const getLatest = (weights: Weight[], measurement: string): number => {
   // @ts-ignore
   return twoDecimals(weights[0][measurement])
 }
+
+/**
+ *
+ * From a list of weights and a measurement type, return the expected
+ * weight. If one can't be found, return undefined
+ *
+ * @param {Weight[]} weights list of weights
+ * @param {By} by what to search by
+ * @param {Date | undefined} value value
+ * @returns {Weight | undefined} weight
+ */
+export const get = (weights: Weight[], by: By, value?: Date): Weight | undefined => {
+  if (by === By.Latest) {
+    if (!weights[0] || weights[0].weight === undefined) return undefined
+    return weights[0]
+  }
+
+  if (by === By.Yesterday) {
+    if (!weights[1]) return undefined
+      return weights[1]
+  }
+
+  if (by === By.Date && value !== undefined) {
+    const compareDate = DateTime.fromISO(value.toISOString(), {
+      zone: 'UTC',
+    })
+
+    let daysWeights = weights.find((w) => {
+      const endDate = DateTime.fromISO(w.date, { zone: 'UTC' })
+
+      return (
+        endDate.year === compareDate.year &&
+        endDate.month === compareDate.month &&
+        endDate.day === compareDate.day
+      )
+    })
+
+    if (daysWeights) return daysWeights;
+  }
+
+  return undefined
+}
+
 
 /**
  * From a list of weights, measurement type and possible date, return the
@@ -127,6 +170,21 @@ export const compare = (data: Weight[], changeDate: Date): WeightComparison => {
       muscleMass: findDifference(data, 'muscleMass', changeDate),
       date: changeDate.toISOString(),
     },
+    updatedDate: new Date(data[0].date),
+    rawWeights: data,
+  }
+}
+
+export const compareV2 = (data: Weight[], by: By, value: Date): WeightComparison => {
+  // Latest weight is malformed, so don't return anything
+  const current = get(data, By.Latest)
+  if (!current)
+    throw new Error('No weight registered for most recent entry.')
+
+  const compare = get(data, by, value) ?? current
+  return {
+    current,
+    compare,
     updatedDate: new Date(data[0].date),
     rawWeights: data,
   }
