@@ -57,7 +57,7 @@ export const get = (weights: Weight[], by: By, value?: Date): Weight | undefined
 
     let daysWeights = weights.filter((w) => {
       const endDate = DateTime.fromISO(w.date, { zone: 'UTC' })
-      return endDate <= compareDate
+      return endDate >= compareDate
     })
 
     if (daysWeights) return daysWeights.reverse()[0];
