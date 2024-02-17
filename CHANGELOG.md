@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.5.0
+
+### Minor Changes
+
+- 7086e5c: Added new functions to return raw weights
+
 ## 5.4.4
 
 ### Patch Changes
