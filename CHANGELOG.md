@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.5.1
+
+### Patch Changes
+
+- 1ffe037: fix date comparison
+
 ## 5.5.0
 
 ### Minor Changes
