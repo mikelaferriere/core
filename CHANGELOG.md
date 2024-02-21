@@ -1,5 +1,11 @@
 # @mikelaferriere/homelab-core
 
+## 5.5.3
+
+### Patch Changes
+
+- cfd148a: update calendar types
+
 ## 5.5.2
 
 ### Patch Changes
